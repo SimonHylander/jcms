@@ -1,0 +1,70 @@
+
+<div>
+    <h2><span>Pages</span> {{pages.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Title</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{pages.title}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Type</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{pages.type}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Author</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{pages.author}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Status</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{pages.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Created</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{pages.created}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Updated</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{pages.updated}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

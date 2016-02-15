@@ -1,0 +1,58 @@
+<div>
+    <h2>Pages</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="pages.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Page</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Title</span></th>
+                    <th><span>Type</span></th>
+                    <th><span>Author</span></th>
+                    <th><span>Status</span></th>
+                    <th><span>Created</span></th>
+                    <th><span>Updated</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="page in pages track by page.id">
+                    <td><a ui-sref="page.detail({id:page.id})">{{page.id}}</a></td>
+                    <td>{{page.title}}</td>
+                    <td>{{page.type}}</td>
+                    <td>{{page.author}}</td>
+                    <td>{{page.status}}</td>
+                    <td>{{page.created}}</td>
+                    <td>{{page.updated}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="page.detail({id:page.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="page.edit({id:page.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="page.delete({id:page.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPagesLabel">Create or edit a Pages</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="pages.id" readonly />
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title" ng-model="pages.title"/>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="field_title">Type</label>
+            <select class="form-control" name="title" id="field_type" ng-model="pages.type">
+                <option value="1">Basic Page</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <div class="adjoined-bottom">
+                <div class="grid-container">
+                    <div class="grid-width-100">
+                        <div id="editor"  ng-model="pages.content"></div> <!--ck-editor-->
+                        <!--<textarea ck-editor ng-model="value"></textarea>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            initSample();
+        </script>
+
+
+
+        <!--<div class="form-group">
+            <label class="control-label" for="field_type">Type</label>
+            <input type="number" class="form-control" name="type" id="field_type"
+                    ng-model="pages.type"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_author">Author</label>
+            <input type="text" class="form-control" name="author" id="field_author" ng-model="pages.author"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_status">Status</label>
+            <input type="text" class="form-control" name="status" id="field_status" ng-model="pages.status"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_created">Created</label>
+            <input type="text" class="form-control" name="created" id="field_created" ng-model="pages.created"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_updated">Updated</label>
+            <input type="text" class="form-control" name="updated" id="field_updated" ng-model="pages.updated"/>
+        </div>-->
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

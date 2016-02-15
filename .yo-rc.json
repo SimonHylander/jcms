@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "baseName": "JCMS",
+    "packageName": "com.shy.jcms",
+    "packageFolder": "com/shy/jcms",
+    "authenticationType": "session",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "no",
+    "useSass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "enableTranslation": false,
+    "enableSocialSignIn": false,
+    "rememberMeKey": "bc5e07af47406a2e76dc002a812e2acd640ed6ba",
+    "testFrameworks": [
+      "gatling"
+    ]
+  }
+}
