@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('jCMSApp')
-    .controller('PagesController', function ($scope, $state, Pages) {
-
+    .controller('PagesController', function ($scope, $state, Pages, Principal) {
         $scope.pages = [];
         $scope.loadAll = function() {
             Pages.query(function(result) {

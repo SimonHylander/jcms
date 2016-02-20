@@ -3,6 +3,7 @@ package com.shy.jcms.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -32,10 +33,16 @@ public class Pages implements Serializable {
     private String status;
 
     @Column(name = "created")
-    private String created;
+    private Date created;
 
     @Column(name = "updated")
-    private String updated;
+    private Date updated;
+
+    @Column(name = "created_by")
+    private String createdBy;
+
+    @Column(name = "updated_by")
+    private String updatedBy;
 
     public Long getId() {
         return id;
@@ -81,20 +88,32 @@ public class Pages implements Serializable {
         this.status = status;
     }
 
-    public String getCreated() {
+    public Date getCreated() {
         return created;
     }
 
-    public void setCreated(String created) {
+    public void setCreated(Date created) {
         this.created = created;
     }
 
-    public String getUpdated() {
+    public Date getUpdated() {
         return updated;
     }
 
-    public void setUpdated(String updated) {
+    public void setUpdated(Date updated) {
         this.updated = updated;
+    }
+
+    public String getCreatedBy(){ return createdBy; }
+
+    public void setCreateBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getUpdatedBy(){ return createdBy; }
+
+    public void setUpdatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 
     @Override

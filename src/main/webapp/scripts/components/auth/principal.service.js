@@ -58,6 +58,7 @@ angular.module('jCMSApp')
                 // retrieve the identity data from the server, update the identity object, and then resolve.
                 Account.get().$promise
                     .then(function (account) {
+                    console.log(account);
                         _identity = account.data;
                         _authenticated = true;
                         deferred.resolve(_identity);

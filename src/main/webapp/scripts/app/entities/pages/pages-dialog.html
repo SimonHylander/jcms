@@ -1,6 +1,5 @@
 
 <form name="editForm" role="form" novalidate ng-submit="save()">
-
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="clear()">&times;</button>
@@ -26,45 +25,25 @@
             </select>
         </div>
 
+        <!--<div class="form-group">
+            <label class="control-label" for="field_status">Status</label>
+            <select class="form-control" name="title" id="field_status" ng-model="pages.status">
+                <option value="0">Do not publish</option>
+                <option value="1">Publish</option>
+            </select>
+        </div>-->
+
         <div class="form-group">
             <div class="adjoined-bottom">
                 <div class="grid-container">
                     <div class="grid-width-100">
-                        <div id="editor"  ng-model="pages.content"></div> <!--ck-editor-->
-                        <!--<textarea ck-editor ng-model="value"></textarea>-->
+                        <div ng-controller="CkeditorCtrl">
+                            <div ckeditor="options" ng-model="pages.content" ready="onReady()"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <script>
-            initSample();
-        </script>
-
-
-
-        <!--<div class="form-group">
-            <label class="control-label" for="field_type">Type</label>
-            <input type="number" class="form-control" name="type" id="field_type"
-                    ng-model="pages.type"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_author">Author</label>
-            <input type="text" class="form-control" name="author" id="field_author" ng-model="pages.author"/>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_status">Status</label>
-            <input type="text" class="form-control" name="status" id="field_status" ng-model="pages.status"/>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_created">Created</label>
-            <input type="text" class="form-control" name="created" id="field_created" ng-model="pages.created"/>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_updated">Updated</label>
-            <input type="text" class="form-control" name="updated" id="field_updated" ng-model="pages.updated"/>
-        </div>-->
 
     </div>
     <div class="modal-footer">

@@ -6,7 +6,6 @@ import com.shy.jcms.repository.PagesRepository;
 import com.shy.jcms.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +38,12 @@ public class PagesResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Pages> createPages(@RequestBody Pages pages) throws URISyntaxException {
+
+        pages.setCreated(new Date());
+        pages.setUpdated(new Date());
+
+        System.out.println(pages);
+
         log.debug("REST request to save Pages : {}", pages);
         if (pages.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("pages", "idexists", "A new pages cannot already have an ID")).body(null);
