@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('jCMSApp')
-    .factory('Pages', function ($resource, DateUtils) {
+    .factory('Page', function ($resource, DateUtils) {
         return $resource('api/pages/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
+                    console.log('get');
                     data = angular.fromJson(data);
                     data.created = DateUtils.convertLocaleDateFromServer(data.created);
                     data.updated = DateUtils.convertLocaleDateFromServer(data.updated);

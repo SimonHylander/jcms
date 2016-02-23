@@ -10,25 +10,25 @@
         {
             "fieldId": 2,
             "fieldName": "type",
-            "fieldType": "Float",
+            "fieldType": "Integer",
             "fieldValidateRules": []
         },
         {
             "fieldId": 3,
-            "fieldName": "author",
-            "fieldType": "String",
+            "fieldName": "status",
+            "fieldType": "Integer",
             "fieldValidateRules": []
         },
         {
             "fieldId": 4,
-            "fieldName": "status",
+            "fieldName": "content",
             "fieldType": "String",
             "fieldValidateRules": []
         },
         {
             "fieldId": 5,
             "fieldName": "created",
-            "fieldType": "Lo calDate",
+            "fieldType": "LocalDate",
             "fieldValidateRules": []
         },
         {
@@ -40,17 +40,17 @@
         {
             "fieldId": 7,
             "fieldName": "created_by",
-            "fieldType": "Float",
+            "fieldType": "String",
             "fieldValidateRules": []
         },
         {
             "fieldId": 8,
             "fieldName": "updated_by",
-            "fieldType": "Float",
+            "fieldType": "String",
             "fieldValidateRules": []
         }
     ],
-    "changelogDate": "20160213220039",
+    "changelogDate": "20160221102123",
     "dto": "no",
     "service": "no",
     "pagination": "no"

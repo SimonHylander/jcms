@@ -1,0 +1,70 @@
+<div>
+    <h2>Pagess</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="pages.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+                       >Create new Pages
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Title</span></th>
+                    <th><span>Type</span></th>
+                    <th><span>Author</span></th>
+                    <th><span>Status</span></th>
+                    <th><span>Created</span></th>
+                    <th><span>Updated</span></th>
+                    <th><span>Created_by</span></th>
+                    <th><span>Updated_by</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pages in pagess track by pages.id">
+                    <td><a ui-sref="pages.detail({id:pages.id})">{{pages.id}}</a></td>
+                    <td>{{pages.title}}</td>
+                    <td>{{pages.type}}</td>
+                    <td>{{pages.author}}</td>
+                    <td>{{pages.status}}</td>
+                        <td>{{pages.created | date:'mediumDate'}}</td>
+                        <td>{{pages.updated | date:'mediumDate'}}</td>
+                    <td>{{pages.created_by}}</td>
+                    <td>{{pages.updated_by}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="pages.detail({id:pages.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="pages.edit({id:pages.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="pages.delete({id:pages.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

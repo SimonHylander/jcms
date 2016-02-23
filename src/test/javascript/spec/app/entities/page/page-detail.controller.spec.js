@@ -2,33 +2,33 @@
 
 describe('Controller Tests', function() {
 
-    describe('Pages Detail Controller', function() {
+    describe('Page Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPages;
+        var MockEntity, MockPage;
         var createController;
 
         beforeEach(inject(function($injector) {
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
-            MockPages = jasmine.createSpy('MockPages');
+            MockPage = jasmine.createSpy('MockPage');
             
 
             var locals = {
                 '$scope': $scope,
                 '$rootScope': $rootScope,
                 'entity': MockEntity ,
-                'Pages': MockPages
+                'Page': MockPage
             };
             createController = function() {
-                $injector.get('$controller')("PagesDetailController", locals);
+                $injector.get('$controller')("PageDetailController", locals);
             };
         }));
 
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'jcmsApp:pagesUpdate';
+                var eventType = 'jcmsApp:pageUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);

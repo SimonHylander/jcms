@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory
 import scala.concurrent.duration._
 
 /**
- * Performance test for the Pages entity.
+ * Performance test for the Page entity.
  */
-class PagesGatlingTest extends Simulation {
+class PageGatlingTest extends Simulation {
 
     val context: LoggerContext = LoggerFactory.getILoggerFactory.asInstanceOf[LoggerContext]
     // Log all HTTP requests
@@ -37,7 +37,7 @@ class PagesGatlingTest extends Simulation {
         "X-CSRF-TOKEN" -> "${csrf_token}"
     )
 
-    val scn = scenario("Test the Pages entity")
+    val scn = scenario("Test the Page entity")
         .exec(http("First unauthenticated request")
         .get("/api/account")
         .headers(headers_http)
@@ -59,26 +59,26 @@ class PagesGatlingTest extends Simulation {
         .check(headerRegex("Set-Cookie", "CSRF-TOKEN=(.*); [P,p]ath=/").saveAs("csrf_token")))
         .pause(10)
         .repeat(2) {
-            exec(http("Get all pagess")
-            .get("/api/pagess")
+            exec(http("Get all pages")
+            .get("/api/pages")
             .headers(headers_http_authenticated)
             .check(status.is(200)))
             .pause(10 seconds, 20 seconds)
-            .exec(http("Create new pages")
-            .post("/api/pagess")
+            .exec(http("Create new page")
+            .post("/api/pages")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "title":"SAMPLE_TEXT", "type":null, "author":"SAMPLE_TEXT", "status":"SAMPLE_TEXT", "created":"2020-01-01T00:00:00.000Z", "updated":"2020-01-01T00:00:00.000Z", "created_by":null, "updated_by":null}""")).asJSON
+            .body(StringBody("""{"id":null, "title":"SAMPLE_TEXT", "type":"0", "status":"0", "content":"SAMPLE_TEXT", "created":"2020-01-01T00:00:00.000Z", "updated":"2020-01-01T00:00:00.000Z", "created_by":"SAMPLE_TEXT", "updated_by":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
-            .check(headerRegex("Location", "(.*)").saveAs("new_pages_url")))
+            .check(headerRegex("Location", "(.*)").saveAs("new_page_url")))
             .pause(10)
             .repeat(5) {
-                exec(http("Get created pages")
-                .get("${new_pages_url}")
+                exec(http("Get created page")
+                .get("${new_page_url}")
                 .headers(headers_http_authenticated))
                 .pause(10)
             }
-            .exec(http("Delete created pages")
-            .delete("${new_pages_url}")
+            .exec(http("Delete created page")
+            .delete("${new_page_url}")
             .headers(headers_http_authenticated))
             .pause(10)
         }

@@ -14,11 +14,19 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added the entity Pages.
+        Added the entity Config.
     -->
-    <changeSet id="db-changelog-001" author="jhipster">
-        <addColumn catalogName="cat" schemaName="public" tableName="pages">
-            <column name="content" type="varchar(255)"/>
-        </addColumn>
+    <changeSet id="20160220212638" author="jhipster">
+        <createTable tableName="config">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="site_name" type="varchar(255)"/>
+            
+            <column name="email" type="varchar(255)"/>
+            
+            <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
+        </createTable>
+        
     </changeSet>
 </databaseChangeLog>

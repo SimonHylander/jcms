@@ -1,17 +1,18 @@
 package com.shy.jcms.domain;
 
+import java.time.LocalDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
+import java.util.Date;
 
 /**
- * A Pages.
+ * A Page.
  */
 @Entity
-@Table(name = "pages")
-public class Pages implements Serializable {
+@Table(name = "page")
+public class Page implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,16 +22,13 @@ public class Pages implements Serializable {
     private String title;
 
     @Column(name = "type")
-    private Float type;
+    private Integer type;
+
+    @Column(name = "status")
+    private Integer status;
 
     @Column(name = "content")
     private String content;
-
-    @Column(name = "author")
-    private String author;
-
-    @Column(name = "status")
-    private String status;
 
     @Column(name = "created")
     private Date created;
@@ -39,10 +37,10 @@ public class Pages implements Serializable {
     private Date updated;
 
     @Column(name = "created_by")
-    private String createdBy;
+    private Long created_by;
 
     @Column(name = "updated_by")
-    private String updatedBy;
+    private Long updated_by;
 
     public Long getId() {
         return id;
@@ -60,32 +58,28 @@ public class Pages implements Serializable {
         this.title = title;
     }
 
-    public Float getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(Float type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
-    public String getContent() { return content; }
-
-    public void setContent(String content) { this.content = content; }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Date getCreated() {
@@ -104,17 +98,19 @@ public class Pages implements Serializable {
         this.updated = updated;
     }
 
-    public String getCreatedBy(){ return createdBy; }
-
-    public void setCreateBy(String createdBy) {
-        this.createdBy = createdBy;
+    public Long getCreated_by() {
+        return created_by;
     }
 
-    public String getUpdatedBy(){ return createdBy; }
-
-    public void setUpdatedBy(String createdBy) {
-        this.createdBy = createdBy;
+    public void setCreated_by(Long created_by) {
+        this.created_by = created_by;
     }
+
+    public Long getUpdated_by() {
+        return updated_by;
+    }
+
+    public void setUpdated_by(Long updated_by) { this.updated_by = updated_by; }
 
     @Override
     public boolean equals(Object o) {
@@ -124,8 +120,11 @@ public class Pages implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Pages pages = (Pages) o;
-        return Objects.equals(id, pages.id);
+        Page page = (Page) o;
+        if(page.id == null || id == null) {
+            return false;
+        }
+        return Objects.equals(id, page.id);
     }
 
     @Override
@@ -135,14 +134,16 @@ public class Pages implements Serializable {
 
     @Override
     public String toString() {
-        return "Pages{" +
+        return "Page{" +
             "id=" + id +
             ", title='" + title + "'" +
             ", type='" + type + "'" +
-            ", author='" + author + "'" +
             ", status='" + status + "'" +
+            ", content='" + content + "'" +
             ", created='" + created + "'" +
             ", updated='" + updated + "'" +
+            ", created_by='" + created_by + "'" +
+            ", updated_by='" + updated_by + "'" +
             '}';
     }
 }

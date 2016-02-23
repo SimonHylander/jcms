@@ -3,7 +3,7 @@
 angular.module('jCMSApp')
     .config(function ($stateProvider) {
         $stateProvider
-            .state('pages', {
+            .state('page', {
                 parent: 'entity',
                 url: '/pages',
                 data: {
@@ -12,107 +12,106 @@ angular.module('jCMSApp')
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/entities/pages/pages.html',
-                        controller: 'PagesController'
+                        templateUrl: 'scripts/app/entities/page/pages.html',
+                        controller: 'PageController'
                     }
                 },
                 resolve: {
                 }
             })
-            .state('pages.detail', {
+            .state('page.detail', {
                 parent: 'entity',
-                url: '/pages/{id}',
+                url: '/page/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Pages'
+                    pageTitle: 'Page'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/entities/pages/pages-detail.html',
-                        controller: 'PagesDetailController'
+                        templateUrl: 'scripts/app/entities/page/page-detail.html',
+                        controller: 'PageDetailController'
                     }
                 },
                 resolve: {
-                    entity: ['$stateParams', 'Pages', function($stateParams, Pages) {
-                        return Pages.get({id : $stateParams.id});
+                    entity: ['$stateParams', 'Page', function($stateParams, Page) {
+                        return Page.get({id : $stateParams.id});
                     }]
                 }
             })
-            .state('pages.new', {
-                parent: 'pages',
+            .state('page.new', {
+                parent: 'page',
                 url: '/new',
                 data: {
                     authorities: ['ROLE_USER'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'scripts/app/entities/pages/pages-dialog.html',
-                        controller: function(){},
-                        //controller: 'PagesDialogController',
+                        templateUrl: 'scripts/app/entities/page/page-dialog.html',
+                        controller: 'PageDialogController',
                         size: 'lg',
                         resolve: {
                             entity: function () {
                                 return {
-                                    id: null,
                                     title: null,
                                     type: null,
-                                    content: null
-                                    //author: null,
-                                    //status: null,
-                                    //created: null,
-                                    //updated: null,
-
+                                    status: null,
+                                    content: null,
+                                    created: null,
+                                    updated: null,
+                                    created_by: null,
+                                    updated_by: null,
+                                    id: null
                                 };
                             }
                         }
                     }).result.then(function(result) {
-                        $state.go('pages', null, { reload: true });
+                        $state.go('page', null, { reload: true });
                     }, function() {
-                        $state.go('pages');
+                        $state.go('page');
                     })
                 }]
             })
-            .state('pages.edit', {
-                parent: 'pages',
+            .state('page.edit', {
+                parent: 'page',
                 url: '/{id}/edit',
                 data: {
                     authorities: ['ROLE_USER'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'scripts/app/entities/pages/pages-dialog.html',
-                        controller: 'PagesDialogController',
+                        templateUrl: 'scripts/app/entities/page/page-dialog.html',
+                        controller: 'PageDialogController',
                         size: 'lg',
                         resolve: {
-                            entity: ['Pages', function(Pages) {
-                                return Pages.get({id : $stateParams.id});
+                            entity: ['Page', function(Page) {
+                                return Page.get({id : $stateParams.id});
                             }]
                         }
                     }).result.then(function(result) {
-                        $state.go('pages', null, { reload: true });
+                        $state.go('page', null, { reload: true });
                     }, function() {
                         $state.go('^');
                     })
                 }]
             })
-            .state('pages.delete', {
-                parent: 'pages',
+            .state('page.delete', {
+                parent: 'page',
                 url: '/{id}/delete',
                 data: {
                     authorities: ['ROLE_USER'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'scripts/app/entities/pages/pages-delete-dialog.html',
-                        controller: 'PagesDeleteController',
+                        templateUrl: 'scripts/app/entities/page/page-delete-dialog.html',
+                        controller: 'PageDeleteController',
                         size: 'md',
                         resolve: {
-                            entity: ['Pages', function(Pages) {
-                                return Pages.get({id : $stateParams.id});
+                            entity: ['Page', function(Page) {
+                                return Page.get({id : $stateParams.id});
                             }]
                         }
                     }).result.then(function(result) {
-                        $state.go('pages', null, { reload: true });
+                        $state.go('page', null, { reload: true });
                     }, function() {
                         $state.go('^');
                     })

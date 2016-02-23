@@ -56,23 +56,25 @@ angular.module('jCMSApp')
             };
 
             $scope.save = function () {
+                console.log('save');
                 $scope.isSaving = true;
                 var account = $scope.account;
                 var userId = account.id;
 //                $scope.pages.created_by = userId;
 //                $scope.pages.updated_by = userId;
 
-                if ($scope.pages.id != null) {
+                console.log(userId);
+
+                /*if ($scope.pages.id != null) {
                     Pages.update($scope.pages, onSaveSuccess, onSaveError);
                 } else {
                     Pages.save($scope.pages, onSaveSuccess, onSaveError);
-                }
+                }*/
             };
 
             $scope.clear = function() {
                 $uibModalInstance.dismiss('cancel');
             };
-
         })
 
     .controller('CkeditorCtrl', ['$scope', function ($scope) {

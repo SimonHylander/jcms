@@ -1,6 +1,6 @@
 
 <div>
-    <h2><span>Pages</span> {{pages.id}}</h2>
+    <h2><span>Page</span> {{page.id}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -15,7 +15,7 @@
                     <span>Title</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{pages.title}}</span>
+                    <span class="form-control-static">{{page.title}}</span>
                 </td>
             </tr>
             <tr>
@@ -23,15 +23,7 @@
                     <span>Type</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{pages.type}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>Author</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{pages.author}}</span>
+                    <span class="form-control-static">{{page.type}}</span>
                 </td>
             </tr>
             <tr>
@@ -39,7 +31,15 @@
                     <span>Status</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{pages.status}}</span>
+                    <span class="form-control-static">{{page.status}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Content</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{page.content}}</span>
                 </td>
             </tr>
             <tr>
@@ -47,7 +47,7 @@
                     <span>Created</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{pages.created | date:'mediumDate'}}</span>
+                    <span class="form-control-static">{{page.created | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>
@@ -55,7 +55,7 @@
                     <span>Updated</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{pages.updated | date:'mediumDate'}}</span>
+                    <span class="form-control-static">{{page.updated | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>
@@ -63,7 +63,7 @@
                     <span>Created_by</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{pages.created_by}}</span>
+                    <span class="form-control-static">{{page.created_by}}</span>
                 </td>
             </tr>
             <tr>
@@ -71,7 +71,7 @@
                     <span>Updated_by</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{pages.updated_by}}</span>
+                    <span class="form-control-static">{{page.updated_by}}</span>
                 </td>
             </tr>
             </tbody>

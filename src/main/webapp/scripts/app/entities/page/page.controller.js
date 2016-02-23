@@ -1,14 +1,16 @@
 'use strict';
 
 angular.module('jCMSApp')
-    .controller('PagesController', function ($scope, $state, Pages, Principal) {
+    .controller('PageController', function ($scope, $state, Page) {
+
         $scope.pages = [];
         $scope.loadAll = function() {
-            Pages.query(function(result) {
+            Page.query(function(result) {
                $scope.pages = result;
             });
         };
         $scope.loadAll();
+
 
         $scope.refresh = function () {
             $scope.loadAll();
@@ -16,14 +18,16 @@ angular.module('jCMSApp')
         };
 
         $scope.clear = function () {
-            $scope.pages = {
-                id: null,
+            $scope.page = {
                 title: null,
                 type: null,
                 status: null,
-                content: null
-                //created: null,
-                //updated: null,
+                content: null,
+                created: null,
+                updated: null,
+                created_by: null,
+                updated_by: null,
+                id: null
             };
         };
     });
